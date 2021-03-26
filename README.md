@@ -24,7 +24,7 @@ with the EO extension, to provide information about the platform (satellite, aer
 For defining view geometry of data, it is strongly recommended to use the [`view` extension](https://github.com/stac-extensions/view).
 
 - Examples:
-  - [Item Example](examples/extended-item.json)
+  - [Item Example](examples/item.json)
 - [JSON Schema](json-schema/schema.json)
 
 ## Item Properties or Item Asset fields
@@ -50,11 +50,14 @@ be a 'union' of all the possible bands represented in assets. It should be consi
 on the `eo:bands` of each asset. An Item is only allowed to use `eo:bands` in its Properties if it has at least one asset with 
 a defined bands array.
 
-**NOTE**: In STAC versions 0.9.x and prior, `eo:bands` could only be used by an Asset putting the the Band Object definitions in an Item Properties and referencing these via array index. 1.0.0-beta.1 introduced the current behavior.
+**NOTE**: In STAC versions 0.9.x and prior, `eo:bands` could only be used by an Asset putting the the Band Object definitions in 
+an Item Properties and referencing these via array index. 1.0.0-beta.1 introduced the current behavior.
 
 #### eo:cloud_cover
 
-Estimate of cloud cover as a percentage (0-100) of the entire scene. If not available, the field should not be provided. Generally, this value should be used in Item Properties rather than Item Assets, as an Item from an electro-optical source is a single snapshot of the Earth, so the cloud cover value would apply to all assets. 
+Estimate of cloud cover as a percentage (0-100) of the entire scene. If not available, the field should not be provided. Generally, 
+this value should be used in Item Properties rather than Item Assets, as an Item from an electro-optical source is a single snapshot 
+of the Earth, so the cloud cover value would apply to all assets. 
 
 ### Band Object
 
@@ -76,11 +79,18 @@ clients use this name for display, potentially in conjunction with the common na
 
 #### center_wavelength and full_width_half_max
 
-These fields are a common way to approximately describe a spectral band. In most cases even these numbers are not as useful as the `common_name` that should be supplied with the spectral bands, where they exist. For non-standard bands (such as with hyperspectral sensors) the wavelength fields indicate where the band is.
+These fields are a common way to approximately describe a spectral band. In most cases even these numbers are not as useful as the 
+`common_name` that should be supplied with the spectral bands, where they exist. For non-standard bands (such as with hyperspectral sensors) 
+the wavelength fields indicate where the band is.
 
-Another common way to define a spectral band with a minimum and maximum wavelength, where outside these bounds the transmission is 0%, and non-zero inside the bounds (e.g., 80%). The maximum transmission of a band is not captured in any of these metrics, nor is it important in most cases.
+Another common way to define a spectral band with a minimum and maximum wavelength, where outside these bounds the transmission is 0%, 
+and non-zero inside the bounds (e.g., 80%). The maximum transmission of a band is not captured in any of these metrics, 
+nor is it important in most cases.
 
-However, spectral transmission for a filter does not go from 0% to a constant max value (e.g., 80%) then back to 0%. Such a filter is referred to as a "top-hat" filter due to it's shape, but does not exist in reality. Thus, the minimum and maximum wavelengths are typically selected to be the point at which transmission drops below some threshold, and this threshold is often half of the maximum transmission. Thus if a filter's maximum transmission is 80%, the min and max thresholds would be the points where the transmission drops below 40%.
+However, spectral transmission for a filter does not go from 0% to a constant max value (e.g., 80%) then back to 0%. Such a filter is 
+referred to as a "top-hat" filter due to it's shape, but does not exist in reality. Thus, the minimum and maximum wavelengths are 
+typically selected to be the point at which transmission drops below some threshold, and this threshold is often half of the maximum 
+transmission. Thus if a filter's maximum transmission is 80%, the min and max thresholds would be the points where the transmission drops below 40%.
 
 The `center_wavelength` of a band is the midpoint between the min and max wavelengths:
 
@@ -88,15 +98,19 @@ The `center_wavelength` of a band is the midpoint between the min and max wavele
 center_wavelength = (min_wavelength + max_wavelength) / 2
 ```
 
-The `full_width_half_max` (FWHM) is the difference between the min and max wavelengths, thus representing the width of the band at half it's maximum transmission.
+The `full_width_half_max` (FWHM) is the difference between the min and max wavelengths, 
+thus representing the width of the band at half it's maximum transmission.
 
 ```python
 full_width_half_max = max_wavelength - min_wavelength
 ```
 
-For example, if we were given a band described as (0.4um - 0.5um) the `center_wavelength` would be 0.45um and the `full_width_half_max` would be 0.1um.
+For example, if we were given a band described as (0.4um - 0.5um) the `center_wavelength` would be 0.45um 
+and the `full_width_half_max` would be 0.1um.
 
-In some cases the full transmission profile is needed, such as when harmonizing between two sensor modalities. It is recommended that the full spectral profile be included as a link or an asset (preferably at the [Collection](https://github.com/radiantearth/stac-spec/tree/master/collection-spec/collection-spec.md) level).
+In some cases the full transmission profile is needed, such as when harmonizing between two sensor modalities. It is recommended
+ that the full spectral profile be included as a link or an asset (preferably at the 
+ [Collection](https://github.com/radiantearth/stac-spec/tree/master/collection-spec/collection-spec.md) level).
 
 #### Common Band Names
 
@@ -129,9 +143,9 @@ respectively. The same goes for the difference between `lwir`, `lwir11` and `lwi
 
 ## Best Practices
 
-One of the emerging best practices is to use [Asset Roles](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#asset-roles) to provide clients with more 
-information about the assets in an item. The following list includes a shared vocabulary for some common EO assets. This list should
-not be considered definitive, and implementors are welcome to use other asset roles. If consensus and tooling consolidates around
+One of the emerging best practices is to use [Asset Roles](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#asset-roles)
+to provide clients with more information about the assets in an item. The following list includes a shared vocabulary for some common EO assets. 
+This list should not be considered definitive, and implementors are welcome to use other asset roles. If consensus and tooling consolidates around
 these role names then they will be specified in the future as more standard than just 'best practices'.
 
 | Role Name | Description                                                            |
