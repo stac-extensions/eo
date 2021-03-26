@@ -4,27 +4,27 @@
 - **Identifier:** <https://stac-extensions.github.io/eo/v1.0.0/schema.json>
 - **Field Name Prefix: eo**
 - **Scope: Item**
-- **Extension [Maturity Classification](../README.md#extension-maturity): Proposal**
+- **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions.md#extension-maturity): Proposal**
 - **Owner**: @matthewhanson
 
-This document explains the fields of the STAC Electro-Optical (EO) Extension to a STAC [Item](../../item-spec/item-spec.md). 
+This document explains the fields of the STAC Electro-Optical (EO) Extension to a STAC [Item](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md). 
 
 These fields defined by this extension follow the convention for 
-[additional asset fields for a STAC Item](../../item-spec/item-spec.md#additional-fields-for-assets) and are 
-allowed in either Item Properties or Item Assets.  
+[additional asset fields for a STAC Item](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#additional-fields-for-assets)
+and are allowed in either Item Properties or Item Assets.  
 
 EO data is considered to be data that represents a snapshot of the Earth for a single date and time. It
 could consist of multiple spectral bands in any part of the electromagnetic spectrum. Examples of EO
 data include sensors with visible, short-wave and mid-wave IR bands (e.g., the OLI instrument on
 Landsat-8), long-wave IR bands (e.g. TIRS aboard Landsat-8).
 
-It is strongly recommended to use [Instrument Fields](../../item-spec/common-metadata.md#instrument) with the EO extension,
-to provide information about the platform (satellite, aerial, etc) used to capture the images.
+It is strongly recommended to use [Instrument Fields](https://github.com/radiantearth/stac-spec/tree/master/item-spec/common-metadata.md#instrument) 
+with the EO extension, to provide information about the platform (satellite, aerial, etc) used to capture the images.
 
-For defining view geometry of data, it is strongly recommended to use the [`view` extension](../view/README.md).
+For defining view geometry of data, it is strongly recommended to use the [`view` extension](https://github.com/stac-extensions/view).
 
 - Examples:
-  - [Example using bands and cloud_cover](../../examples/extended-item.json)
+  - [Item Example](examples/extended-item.json)
 - [JSON Schema](json-schema/schema.json)
 
 ## Item Properties or Item Asset fields
@@ -96,7 +96,7 @@ full_width_half_max = max_wavelength - min_wavelength
 
 For example, if we were given a band described as (0.4um - 0.5um) the `center_wavelength` would be 0.45um and the `full_width_half_max` would be 0.1um.
 
-In some cases the full transmission profile is needed, such as when harmonizing between two sensor modalities. It is recommended that the full spectral profile be included as a link or an asset (preferably at the [Collection](../../collection-spec/collection-spec.md) level).
+In some cases the full transmission profile is needed, such as when harmonizing between two sensor modalities. It is recommended that the full spectral profile be included as a link or an asset (preferably at the [Collection](https://github.com/radiantearth/stac-spec/tree/master/collection-spec/collection-spec.md) level).
 
 #### Common Band Names
 
@@ -123,16 +123,13 @@ numbers of several popular instruments.
 | lwir11      | 10.5 - 11.5     |             | 10        |            | 31    |      |
 | lwir12      | 11.5 - 12.5     |             | 11        |            | 32    |      |
 
-The difference between the `nir`, `nir08`, and `nir09` bands are that the `nir` band is a wider band that covers most of the spectral range of 0.75μm to 1.0μm. `nir08` and `nir09` are narrow bands centered 0.85μm and 0.95μm respectively. The same goes for the difference between `lwir`, `lwir11` and `lwir12`.
-
-## Implementations
-
-A number of implementations listed on [STAC Examples on stacspec.org](https://stacspec.org/#examples) are making use of the core EO properties, including the SpaceNet, CBERS, sat-api and Planet implementations. This is not marked as more mature because
-the eo:bands portion is still being fleshed out.
+The difference between the `nir`, `nir08`, and `nir09` bands are that the `nir` band is a wider band that covers 
+most of the spectral range of 0.75μm to 1.0μm. `nir08` and `nir09` are narrow bands centered 0.85μm and 0.95μm 
+respectively. The same goes for the difference between `lwir`, `lwir11` and `lwir12`.
 
 ## Best Practices
 
-One of the emerging best practices is to use [Asset Roles](../../item-spec/item-spec.md#asset-roles) to provide clients with more 
+One of the emerging best practices is to use [Asset Roles](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#asset-roles) to provide clients with more 
 information about the assets in an item. The following list includes a shared vocabulary for some common EO assets. This list should
 not be considered definitive, and implementors are welcome to use other asset roles. If consensus and tooling consolidates around
 these role names then they will be specified in the future as more standard than just 'best practices'.
