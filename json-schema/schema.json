@@ -109,10 +109,7 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "enum": [
-              "eo",
-              "https://schemas.stacspec.org/v1.0.0-rc.1/extensions/eo/json-schema/schema.json"
-            ]
+            "const": "https://stac-extensions.github.io/eo/v1.0.0/schema.json"
           }
         }
       }
