@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://stac-extensions.github.io/template/v1.0.0/schema.json#",
-  "title": "Template Extension",
-  "description": "STAC Template Extension for STAC Items and STAC Collections.",
+  "$id": "https://stac-extensions.github.io/eo/v1.0.0/schema.json#",
+  "title": "EO Extension",
+  "description": "STAC EO Extension for STAC Items.",
   "oneOf": [
     {
       "$comment": "This is the schema for STAC Items.",
@@ -19,22 +19,48 @@
               "const": "Feature"
             },
             "properties": {
-              "allOf": [
-                {
-                  "$comment": "Require fields here for item properties.",
-                  "required": [
-                    "template:new_field"
-                  ]
-                },
-                {
-                  "$ref": "#/definitions/fields"
-                }
-              ]
+              "$ref": "#/definitions/fields"
             },
             "assets": {
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/definitions/fields"
+              }
+            }
+          },
+          "$comment": "The if-then-else below checks whether the eo:bands is given in assets or not. If yes, allows eo:bands in properties (else), otherwise, disallows eo:bands in properties (then).",
+          "if": {
+            "required": [
+              "assets"
+            ],
+            "properties": {
+              "assets": {
+                "type": "object",
+                "additionalProperties": {
+                  "properties": {
+                    "eo:bands": false
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "properties": {
+                "properties": {
+                  "eo:bands": false
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "properties": {
+                "properties": {
+                  "eo:bands": {
+                    "$ref": "#/definitions/bands"
+                  }
+                }
               }
             }
           }
@@ -69,13 +95,6 @@
               }
             }
           }
-        },
-        {
-          "$comment": "Remove this and the following object if this is not an extension to a Collection.",
-          "$ref": "#/definitions/stac_extensions"
-        },
-        {
-          "$ref": "#/definitions/fields"
         }
       ]
     }
@@ -90,50 +109,59 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://stac-extensions.github.io/template/v1.0.0/schema.json"
+            "enum": [
+              "eo",
+              "https://schemas.stacspec.org/v1.0.0-rc.1/extensions/eo/json-schema/schema.json"
+            ]
           }
         }
       }
     },
     "fields": {
-      "$comment": "Add your new fields here. Don't require them here, do that above in the item schema.",
       "type": "object",
       "properties": {
-        "template:new_field": {
-          "type": "string"
+        "eo:cloud_cover": {
+          "title": "Cloud Cover",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
         },
-        "template:xyz": {
-          "type": "object",
-          "required": [
-            "x",
-            "y",
-            "z"
-          ],
-          "properties": {
-            "x": {
-              "type": "number"
-            },
-            "y": {
-              "type": "number"
-            },
-            "z": {
-              "type": "number"
-            }
-          }
-        }, 
-        "template:another_one": {
-          "type": "array", 
-          "items": {
-            "type": "number"
-          }
+        "eo:bands": {
+          "$ref": "#/definitions/bands"
         }
       },
       "patternProperties": {
-        "^(?!template:)": {
-          "$comment": "Above, change `template` to the prefix of this extension"
-        }
+        "^(?!eo:)": {}
       },
       "additionalProperties": false
+    },
+    "bands": {
+      "title": "Bands",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Band",
+        "type": "object",
+        "minProperties": 1,
+        "properties": {
+          "name": {
+            "title": "Name of the band",
+            "type": "string"
+          },
+          "common_name": {
+            "title": "Common Name of the band",
+            "type": "string"
+          },
+          "center_wavelength": {
+            "title": "Center Wavelength",
+            "type": "number"
+          },
+          "full_width_half_max": {
+            "title": "Full Width Half Max (FWHM)",
+            "type": "number"
+          }
+        }
+      }
     }
   }
 }
