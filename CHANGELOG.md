@@ -16,4 +16,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `common_name` is validated as an enum (no other values allowed)
+
 [Unreleased]: <https://github.com/stac-extensions/eo/compare/v1.0.0...HEAD>
