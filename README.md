@@ -7,10 +7,8 @@
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Stable
 - **Owner**: @matthewhanson
 
-This document explains the fields of the STAC Electro-Optical (EO) Extension. 
-These fields defined by this extension follow the convention for 
-[additional asset fields for a STAC Item](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#additional-fields-for-assets)
-and are allowed in either Item Properties, Item Assets or Collection Assets.
+This document explains the fields of the Electro-Optical (EO) Extension to the
+[SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
 
 EO data is considered to be data that represents a snapshot of the Earth for a single date and time. It
 could consist of multiple spectral bands in any part of the electromagnetic spectrum. Examples of EO
