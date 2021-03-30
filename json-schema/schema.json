@@ -147,7 +147,24 @@
           },
           "common_name": {
             "title": "Common Name of the band",
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "coastal",
+              "blue",
+              "green",
+              "red",
+              "yellow",
+              "pan",
+              "nir",
+              "nir08",
+              "nir09",
+              "cirrus",
+              "swir16",
+              "swir22",
+              "lwir",
+              "lwir11",
+              "lwir12"
+            ]
           },
           "center_wavelength": {
             "title": "Center Wavelength",

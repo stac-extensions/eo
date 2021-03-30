@@ -112,8 +112,8 @@ In some cases the full transmission profile is needed, such as when harmonizing 
 
 #### Common Band Names
 
-The band's common_name is the name that is commonly used to refer to that band's spectral
-properties. The table below shows the common name based on the average band range for the band
+The band's `common_name` is the name that is commonly used to refer to that band's spectral
+properties. The table below shows the allowed common names based on the average band range for the band
 numbers of several popular instruments.
 
 | Common Name | Band Range (μm) | Landsat 5/7 | Landsat 8 | Sentinel 2 | MODIS | NAIP |
