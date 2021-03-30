@@ -1,17 +1,16 @@
 # Electro-Optical Extension Specification
 
-- **Title: Electro-Optical**
+- **Title:** Electro-Optical
 - **Identifier:** <https://stac-extensions.github.io/eo/v1.0.0/schema.json>
-- **Field Name Prefix: eo**
-- **Scope: Item**
-- **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions.md#extension-maturity): Proposal**
+- **Field Name Prefix:** eo
+- **Scope:** Item, Collection
+- **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Stable
 - **Owner**: @matthewhanson
 
-This document explains the fields of the STAC Electro-Optical (EO) Extension to a STAC [Item](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md). 
-
+This document explains the fields of the STAC Electro-Optical (EO) Extension. 
 These fields defined by this extension follow the convention for 
 [additional asset fields for a STAC Item](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#additional-fields-for-assets)
-and are allowed in either Item Properties or Item Assets.  
+and are allowed in either Item Properties, Item Assets or Collection Assets.
 
 EO data is considered to be data that represents a snapshot of the Earth for a single date and time. It
 could consist of multiple spectral bands in any part of the electromagnetic spectrum. Examples of EO
@@ -24,10 +23,11 @@ with the EO extension, to provide information about the platform (satellite, aer
 For defining view geometry of data, it is strongly recommended to use the [`view` extension](https://github.com/stac-extensions/view).
 
 - Examples:
-  - [Item Example](examples/item.json)
+  - [Item example](examples/item.json)
 - [JSON Schema](json-schema/schema.json)
+- [Changelog](./CHANGELOG.md)
 
-## Item Properties or Item Asset fields
+## Item Properties or Asset Fields
 
 | Field Name     | Type                           | Description |
 | -------------- | ------------------------------ | ----------- |
@@ -155,3 +155,34 @@ these role names then they will be specified in the future as more standard than
 | saturation |  Points to a file that indicates where pixels in the input spectral bands are saturated. |
 | cloud | Points to a file that indicates whether a pixel is assessed as being cloud |
 | cloud-shadow | Points to a file that indicates whether a pixel is assessed as being cloud shadow. |
+
+## Contributing
+
+All contributions are subject to the
+[STAC Specification Code of Conduct](https://github.com/radiantearth/stac-spec/blob/master/CODE_OF_CONDUCT.md).
+For contributions, please follow the
+[STAC specification contributing guide](https://github.com/radiantearth/stac-spec/blob/master/CONTRIBUTING.md) Instructions
+for running tests are copied here for convenience.
+
+### Running tests
+
+The same checks that run as checks on PR's are part of the repository and can be run locally to verify that changes are valid. 
+To run tests locally, you'll need `npm`, which is a standard part of any [node.js installation](https://nodejs.org/en/download/).
+
+First you'll need to install everything with npm once. Just navigate to the root of this repository and on 
+your command line run:
+```bash
+npm install
+```
+
+Then to check markdown formatting and test the examples against the JSON schema, you can run:
+```bash
+npm test
+```
+
+This will spit out the same texts that you see online, and you can then go and fix your markdown or examples.
+
+If the tests reveal formatting problems with the examples, you can fix them with:
+```bash
+npm run format-examples
+```
