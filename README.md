@@ -67,6 +67,7 @@ of the Earth, so the cloud cover value would apply to all assets.
 | description         | string | Description to fully explain the band. [CommonMark 0.29](http://commonmark.org/) syntax MAY be used for rich text representation. |
 | center_wavelength   | number | The center wavelength of the band, in micrometers (μm). |
 | full_width_half_max | number | Full width at half maximum (FWHM). The width of the band, as measured at half the maximum transmission, in micrometers (μm). |
+| solar_illumination  | number | The solar illumination of the asset, as measured at half the maximum transmission, in W/m2/micrometers. |
 
 *At least one of the fields must be specified.*
 
@@ -110,6 +111,18 @@ and the `full_width_half_max` would be 0.1um.
 In some cases the full transmission profile is needed, such as when harmonizing between two sensor modalities. It is recommended
  that the full spectral profile be included as a link or an asset (preferably at the 
  [Collection](https://github.com/radiantearth/stac-spec/tree/master/collection-spec/collection-spec.md) level).
+
+#### solar_illumination
+
+In satellite-based remote sensing applications, the calibration of the sensor recorded top-of-atmosphere reflectance to radiance, or vice-versa,
+is carried out using a reference spectral solar irradiance value.
+It depends of the extra-terrestrial solar irradiance (e.g. [[Thuillier et al., 2003](https://link.springer.com/article/10.1023/A:1024048429145)])
+at a specific spectral wavelength,
+of the illumination conditions during the calibration data acquisition (through platform navigation and attitude),
+of the instrument viewing geometry on the diffuser panel.
+The value in this field is the is the mean value representing the solar illumination in W/m2/micrometers
+at a specific level (e.g. Top of Atmosphere) for the asset.
+For instance, this value is used for optical calibration of an asset (e.g. [ESUN(b) value in OTB optical calibration application](https://www.orfeo-toolbox.org/CookBook/Applications/app_OpticalCalibration.html#description))
 
 #### Common Band Names
 

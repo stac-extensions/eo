@@ -177,6 +177,10 @@
           "full_width_half_max": {
             "title": "Full Width Half Max (FWHM)",
             "type": "number"
+          },
+          "solar_illumination": {
+            "title": "Solar Illumination",
+            "type": "number"
           }
         }
       }
