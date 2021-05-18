@@ -67,7 +67,7 @@ of the Earth, so the cloud cover value would apply to all assets.
 | description         | string | Description to fully explain the band. [CommonMark 0.29](http://commonmark.org/) syntax MAY be used for rich text representation. |
 | center_wavelength   | number | The center wavelength of the band, in micrometers (μm). |
 | full_width_half_max | number | Full width at half maximum (FWHM). The width of the band, as measured at half the maximum transmission, in micrometers (μm). |
-| solar_illumination  | number | The solar illumination of the asset, as measured at half the maximum transmission, in W/m2/micrometers. |
+| solar_illumination  | number | The solar illumination of the band, as measured at half the maximum transmission, in W/m2/micrometers. |
 
 *At least one of the fields must be specified.*
 
