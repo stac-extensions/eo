@@ -130,24 +130,24 @@ The band's `common_name` is the name that is commonly used to refer to that band
 properties. The table below shows the allowed common names based on the average band range for the band
 numbers of several popular instruments.
 
-| Common Name | Band Range (μm) | Landsat 5/7 | Landsat 8 | Sentinel 2 | MODIS | NAIP |
-| ----------- | --------------- | ----------- | --------- | ---------- | ----- | ---- |
-| coastal     | 0.40 - 0.45     |             | 1         | 1          |       |      |
-| blue        | 0.45 - 0.50     | 1           | 2         | 2          | 3     | 3    |
-| green       | 0.50 - 0.60     | 2           | 3         | 3          | 4     | 2    |
-| red         | 0.60 - 0.70     | 3           | 4         | 4          | 1     | 1    |
-| yellow      | 0.58 - 0.62     |             |           |            |       |      |
-| pan         | 0.50 - 0.70     | 8 (*L7 only*) | 8       |            |       |      |
-| rededge     | 0.70 - 0.79     |             |           | 5, 6, 7    |       |      |
-| nir         | 0.75 - 1.00     | 4           |           | 8          | 2     | 4    |
-| nir08       | 0.75 - 0.90     |             | 5         | 8a         |       |      |
-| nir09       | 0.85 - 1.05     |             |           | 9          |       |      |
-| cirrus      | 1.35 - 1.40     |             | 9         | 10         | 26    |      |
-| swir16      | 1.55 - 1.75     | 5           | 6         | 11         | 6     |      |
-| swir22      | 2.10 - 2.30     | 7           | 7         | 12         | 7     |      |
-| lwir        | 10.5 - 12.5     | 6           |           |            |       |      |
-| lwir11      | 10.5 - 11.5     |             | 10        |            | 31    |      |
-| lwir12      | 11.5 - 12.5     |             | 11        |            | 32    |      |
+| Common Name | Band Range (μm) | Landsat 5/7 | Landsat 8 | Sentinel 2 | MODIS | NAIP | Planet Fusion | Planet 3-band | Planet 4-band | Planet 8-band |
+| ----------- | --------------- | ----------- | --------- | ---------- | ----- | ---- | ------------- | ------------- | ------------- | ------------- |
+| coastal     | 0.40 - 0.45     |             | 1         | 1          |       |      |               |               |               | 1             |
+| blue        | 0.45 - 0.50     | 1           | 2         | 2          | 3     | 3    | 1             | 3             | 1             | 2             |
+| green       | 0.50 - 0.60     | 2           | 3         | 3          | 4     | 2    | 2             | 2             | 2             | 3, 4          |
+| red         | 0.60 - 0.70     | 3           | 4         | 4          | 1     | 1    | 3             | 1             | 3             | 6             |
+| yellow      | 0.58 - 0.62     |             |           |            |       |      |               |               |               | 5             |
+| pan         | 0.50 - 0.70     | 8 (*L7 only*) | 8       |            |       |      |               |               |               |               |
+| rededge     | 0.70 - 0.79     |             |           | 5, 6, 7    |       |      |               |               |               | 7             |
+| nir         | 0.75 - 1.00     | 4           |           | 8          | 2     | 4    | 4             |               | 4             | 8             |
+| nir08       | 0.75 - 0.90     |             | 5         | 8a         |       |      |               |               |               |               |
+| nir09       | 0.85 - 1.05     |             |           | 9          |       |      |               |               |               |               |
+| cirrus      | 1.35 - 1.40     |             | 9         | 10         | 26    |      |               |               |               |               |
+| swir16      | 1.55 - 1.75     | 5           | 6         | 11         | 6     |      |               |               |               |               |
+| swir22      | 2.10 - 2.30     | 7           | 7         | 12         | 7     |      |               |               |               |               |
+| lwir        | 10.5 - 12.5     | 6           |           |            |       |      |               |               |               |               |
+| lwir11      | 10.5 - 11.5     |             | 10        |            | 31    |      |               |               |               |               |
+| lwir12      | 11.5 - 12.5     |             | 11        |            | 32    |      |               |               |               |               |
 
 The difference between the `nir`, `nir08`, and `nir09` bands are that the `nir` band is a wider band that covers 
 most of the spectral range of 0.75μm to 1.0μm. `nir08` and `nir09` are narrow bands centered 0.85μm and 0.95μm 
