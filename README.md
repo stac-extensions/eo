@@ -49,7 +49,7 @@ be a 'union' of all the possible bands represented in assets. It should be consi
 on the `eo:bands` of each asset. An Item is only allowed to use `eo:bands` in its Properties if it has at least one asset with 
 a defined bands array.
 
-**NOTE**: In STAC versions 0.9.x and prior, `eo:bands` could only be used by an Asset putting the the Band Object definitions in 
+**NOTE**: In STAC versions 0.9.x and prior, `eo:bands` could only be used by an Asset putting the Band Object definitions in 
 an Item Properties and referencing these via array index. 1.0.0-beta.1 introduced the current behavior.
 
 #### eo:cloud_cover
@@ -120,7 +120,7 @@ It depends of the extra-terrestrial solar irradiance (e.g. [[Thuillier et al., 2
 at a specific spectral wavelength,
 of the illumination conditions during the calibration data acquisition (through platform navigation and attitude),
 of the instrument viewing geometry on the diffuser panel.
-The value in this field is the is the mean value representing the solar illumination in W/m2/micrometers
+The value in this field is the mean value representing the solar illumination in W/m2/micrometers
 at a specific level (e.g. Top of Atmosphere) for the asset.
 For instance, this value is used for optical calibration of an asset (e.g. [ESUN(b) value in OTB optical calibration application](https://www.orfeo-toolbox.org/CookBook/Applications/app_OpticalCalibration.html#description))
 
