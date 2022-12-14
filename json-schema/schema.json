@@ -181,6 +181,10 @@
           "solar_illumination": {
             "title": "Solar Illumination",
             "type": "number"
+          },
+          "description": {
+            "title": "Detailed Band Description",
+            "type": "string"
           }
         }
       }
