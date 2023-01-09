@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-`solar_illumination` field for the solar illumination value of the asset.
+- `solar_illumination` field for the solar illumination value of the asset.
+- Added new common names for `rededge1`, `rededge2` and `rededge3`
 
 ### Changed
 
