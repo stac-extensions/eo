@@ -22,6 +22,7 @@ with the EO extension, to provide information about the platform (satellite, aer
 For defining view geometry of data, it is strongly recommended to use the [`view` extension](https://github.com/stac-extensions/view).
 
 - Examples:
+  - [Collection example](examples/collection.json)
   - [Item example](examples/item.json)
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)

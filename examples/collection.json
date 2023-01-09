@@ -1,55 +1,81 @@
 {
-  "stac_version": "1.0.0",
+  "id": "eo-collection",
+  "type": "Collection",
   "stac_extensions": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
     "https://stac-extensions.github.io/eo/v1.0.0/schema.json"
   ],
-  "type": "Feature",
-  "id": "20201211_223832_CS2",
-  "bbox": [
-    172.91173669923782,
-    1.3438851951615003,
-    172.95469614953714,
-    1.3690476620161975
-  ],
-  "geometry": {
-    "type": "Polygon",
-    "coordinates": [
-      [
+  "stac_version": "1.0.0",
+  "description": "A simple Collection demonstrating EO extension fields in a Collection.",
+  "title": "Simple EO Collection",
+  "extent": {
+    "spatial": {
+      "bbox": [
         [
           172.91173669923782,
-          1.3438851951615003
-        ],
-        [
-          172.95469614953714,
-          1.3438851951615003
-        ],
-        [
+          1.3438851951615003,
           172.95469614953714,
           1.3690476620161975
-        ],
-        [
-          172.91173669923782,
-          1.3690476620161975
-        ],
-        [
-          172.91173669923782,
-          1.3438851951615003
         ]
       ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2020-12-11T22:38:32.125Z",
+          "2020-12-14T18:02:31.437Z"
+        ]
+      ]
+    }
+  },
+  "license": "CC-BY-4.0",
+  "summaries": {
+    "platform": [
+      "cool_sat1",
+      "cool_sat2"
+    ],
+    "constellation": [
+      "ion"
+    ],
+    "instruments": [
+      "cool_sensor_v1",
+      "cool_sensor_v2"
+    ],
+    "eo:cloud_cover": {
+      "minimum": 0,
+      "maximum": 50
+    },
+    "eo:bands": [
+      {
+        "name": "band1",
+        "common_name": "blue",
+        "center_wavelength": 470,
+        "full_width_half_max": 70,
+        "solar_illumination": 1959.66
+      },
+      {
+        "name": "band2",
+        "common_name": "green",
+        "center_wavelength": 560,
+        "full_width_half_max": 80,
+        "solar_illumination": 1823.24
+      },
+      {
+        "name": "band3",
+        "common_name": "red",
+        "center_wavelength": 645,
+        "full_width_half_max": 90,
+        "solar_illumination": 1512.06
+      },
+      {
+        "name": "band4",
+        "common_name": "nir",
+        "center_wavelength": 800,
+        "full_width_half_max": 152,
+        "solar_illumination": 1041.63
+      }
     ]
   },
-  "properties": {
-    "datetime": "2020-12-11T22:38:32.125Z",
-    "created": "2020-12-12T01:48:13.725Z",
-    "updated": "2020-12-12T01:48:13.725Z",
-    "platform": "cool_sat2",
-    "instruments": [
-      "cool_sensor_v1"
-    ],
-    "gsd": 0.66,
-    "eo:cloud_cover": 1.2
-  },
-  "collection": "eo-collection",
   "links": [
     {
       "rel": "root",
@@ -58,21 +84,14 @@
       "title": "Simple Example Collection"
     },
     {
-      "rel": "parent",
-      "href": "./collection.json",
-      "type": "application/json",
-      "title": "Simple Example Collection"
-    },
-    {
-      "rel": "collection",
-      "href": "./collection.json",
-      "type": "application/json",
-      "title": "Simple Example Collection"
+      "rel": "item",
+      "href": "./item.json",
+      "type": "application/geo+json",
+      "title": "20201211_223832_CS2"
     }
   ],
-  "assets": {
+  "item_assets": {
     "analytic": {
-      "href": "https://storage.googleapis.com/open-cogs/stac-examples/20201211_223832_CS2_analytic.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "4-Band Analytic",
       "roles": [
@@ -110,7 +129,6 @@
       ]
     },
     "thumbnail": {
-      "href": "https://storage.googleapis.com/open-cogs/stac-examples/20201211_223832_CS2.jpg",
       "title": "Thumbnail",
       "type": "image/png",
       "roles": [
@@ -118,7 +136,6 @@
       ]
     },
     "visual": {
-      "href": "https://storage.googleapis.com/open-cogs/stac-examples/20201211_223832_CS2.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "3-Band Visual",
       "roles": [
