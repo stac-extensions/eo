@@ -8,15 +8,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-`solar_illumination` field for the solar illumination value of the asset.
+- `solar_illumination` field for the solar illumination value of the band.
 
 ### Changed
+
+- Defined minimum values for `center_wavelength` and `full_width_half_max` (> 0)
 
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+
+- Added `description` to the JSON Schema.
 
 ## [v1.0.0] - 2021-03-30
 
