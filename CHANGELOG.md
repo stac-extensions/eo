@@ -8,16 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-`solar_illumination` field for the solar illumination value of the asset.
-`eo:snow_cover` field for the snow cover value of the entire scene.
+- `solar_illumination` field for the solar illumination value of the band.
+- `eo:snow_cover` field for the snow and ice cover value of the entire scene.
 
 ### Changed
+
+- Defined minimum values for `center_wavelength` and `full_width_half_max` (> 0)
 
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+
+- Added `description` to the JSON Schema.
 
 ## [v1.0.0] - 2021-03-30
 

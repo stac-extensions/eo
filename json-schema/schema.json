@@ -176,17 +176,25 @@
               "lwir12"
             ]
           },
+          "description": {
+            "title": "Description of the band",
+            "type": "string",
+            "minLength": 1
+          },
           "center_wavelength": {
             "title": "Center Wavelength",
-            "type": "number"
+            "type": "number",
+            "minimumExclusive": 0
           },
           "full_width_half_max": {
             "title": "Full Width Half Max (FWHM)",
-            "type": "number"
+            "type": "number",
+            "minimumExclusive": 0
           },
           "solar_illumination": {
             "title": "Solar Illumination",
-            "type": "number"
+            "type": "number",
+            "minimum": 0
           }
         }
       }
