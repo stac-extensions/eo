@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Updated Item example to STAC v1.0.0
+- Fixed wavelength and FWHM values in the examples
 - Added `description` to the JSON Schema.
 
 ## [v1.0.0] - 2021-03-30

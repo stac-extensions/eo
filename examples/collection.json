@@ -49,29 +49,29 @@
       {
         "name": "band1",
         "common_name": "blue",
-        "center_wavelength": 470,
-        "full_width_half_max": 70,
+        "center_wavelength": 0.47,
+        "full_width_half_max": 0.07,
         "solar_illumination": 1959.66
       },
       {
         "name": "band2",
         "common_name": "green",
-        "center_wavelength": 560,
-        "full_width_half_max": 80,
+        "center_wavelength": 0.56,
+        "full_width_half_max": 0.08,
         "solar_illumination": 1823.24
       },
       {
         "name": "band3",
         "common_name": "red",
-        "center_wavelength": 645,
-        "full_width_half_max": 90,
+        "center_wavelength": 0.645,
+        "full_width_half_max": 0.09,
         "solar_illumination": 1512.06
       },
       {
         "name": "band4",
         "common_name": "nir",
-        "center_wavelength": 800,
-        "full_width_half_max": 152,
+        "center_wavelength": 0.8,
+        "full_width_half_max": 0.152,
         "solar_illumination": 1041.63
       }
     ]
@@ -101,29 +101,29 @@
         {
           "name": "band1",
           "common_name": "blue",
-          "center_wavelength": 470,
-          "full_width_half_max": 70,
+          "center_wavelength": 0.47,
+          "full_width_half_max": 0.7,
           "solar_illumination": 1959.66
         },
         {
           "name": "band2",
           "common_name": "green",
-          "center_wavelength": 560,
-          "full_width_half_max": 80,
+          "center_wavelength": 0.56,
+          "full_width_half_max": 0.08,
           "solar_illumination": 1823.24
         },
         {
           "name": "band3",
           "common_name": "red",
-          "center_wavelength": 645,
-          "full_width_half_max": 90,
+          "center_wavelength": 0.645,
+          "full_width_half_max": 0.9,
           "solar_illumination": 1512.06
         },
         {
           "name": "band4",
           "common_name": "nir",
-          "center_wavelength": 800,
-          "full_width_half_max": 152,
+          "center_wavelength": 0.8,
+          "full_width_half_max": 0.152,
           "solar_illumination": 1041.63
         }
       ]
@@ -145,20 +145,20 @@
         {
           "name": "band3",
           "common_name": "red",
-          "center_wavelength": 645,
-          "full_width_half_max": 90
+          "center_wavelength": 0.645,
+          "full_width_half_max": 0.09
         },
         {
           "name": "band2",
           "common_name": "green",
-          "center_wavelength": 560,
-          "full_width_half_max": 80
+          "center_wavelength": 0.56,
+          "full_width_half_max": 0.08
         },
         {
           "name": "band1",
           "common_name": "blue",
-          "center_wavelength": 470,
-          "full_width_half_max": 70
+          "center_wavelength": 0.47,
+          "full_width_half_max": 0.07
         }
       ]
     }
