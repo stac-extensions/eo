@@ -47,7 +47,8 @@
       "cool_sensor_v1"
     ],
     "gsd": 0.66,
-    "eo:cloud_cover": 1.2
+    "eo:cloud_cover": 1.2,
+    "eo:snow_cover": 0
   },
   "links": [],
   "assets": {

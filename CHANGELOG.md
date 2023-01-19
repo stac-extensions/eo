@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `solar_illumination` field for the solar illumination value of the band.
+- `eo:snow_cover` field for the snow and ice cover value of the entire scene.
 
 ### Changed
 
