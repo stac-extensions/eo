@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `solar_illumination` field for the solar illumination value of the band.
 - `eo:snow_cover` field for the snow and ice cover value of the entire scene.
+- Example for a Collection
 
 ### Changed
 
@@ -21,6 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Updated Item example to STAC v1.0.0
+- Fixed wavelength and FWHM values in the examples
 - Added `description` to the JSON Schema.
 
 ## [v1.0.0] - 2021-03-30
