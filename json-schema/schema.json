@@ -126,6 +126,12 @@
           "minimum": 0,
           "maximum": 100
         },
+        "eo:snow_cover": {
+          "title": "Snow and Ice Cover",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
         "eo:bands": {
           "$ref": "#/definitions/bands"
         }
