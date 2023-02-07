@@ -139,9 +139,9 @@ numbers of several popular instruments.
 | yellow      | 0.58 - 0.62     |             |           |            |       |      |
 | pan         | 0.50 - 0.70     | 8 (*L7 only*) | 8       |            |       |      |
 | rededge     | 0.70 - 0.79     |             |           |            |       |      |
-| rededge1    | 0.70 - 0.73     |             |           | 5          |       |      |
-| rededge2    | 0.73 - 0.76     |             |           | 6          |       |      |
-| rededge3    | 0.76 - 0.79     |             |           | 7          |       |      |
+| rededge715  | 0.70 - 0.73     |             |           | 5          |       |      |
+| rededge745  | 0.73 - 0.76     |             |           | 6          |       |      |
+| rededge775  | 0.76 - 0.79     |             |           | 7          |       |      |
 | nir         | 0.75 - 1.00     | 4           |           | 8          | 2     | 4    |
 | nir08       | 0.75 - 0.90     |             | 5         | 8a         |       |      |
 | nir09       | 0.85 - 1.05     |             |           | 9          |       |      |
@@ -156,7 +156,7 @@ The difference between the `nir`, `nir08`, and `nir09` bands are that the `nir` 
 most of the spectral range of 0.75μm to 1.0μm. `nir08` and `nir09` are narrow bands centered 0.85μm and 0.95μm 
 respectively. The same goes for the difference between:
 - `lwir`, `lwir11` and `lwir12`
-- `rededge`, `rededge1`, `rededge2` and `rededge3`
+- `rededge`, `rededge715`, `rededge745` and `rededge775`
 
 ## Best Practices
 
