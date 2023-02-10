@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.1.0] - 2023-02-08
+
 ### Added
 
 - `solar_illumination` field for the solar illumination value of the band.
@@ -15,10 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Defined minimum values for `center_wavelength` and `full_width_half_max` (> 0)
-
-### Deprecated
-
-### Removed
 
 ### Fixed
 
@@ -34,5 +32,6 @@ Initial independent release, see [previous history](https://github.com/radiantea
 
 - `common_name` is validated as an enum (no other values allowed)
 
-[Unreleased]: <https://github.com/stac-extensions/eo/compare/v1.0.0...HEAD>
+[Unreleased]: <https://github.com/stac-extensions/eo/compare/v1.1.0...HEAD>
+[v1.1.0]: <https://github.com/stac-extensions/eo/compare/v1.0.0...v1.1.0>
 [v1.0.0]: <https://github.com/stac-extensions/eo/tree/v1.0.0>
