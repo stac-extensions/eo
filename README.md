@@ -60,7 +60,7 @@ bands](https://www.sciencedirect.com/topics/earth-and-planetary-sciences/spectra
 the file and understand which band is 'red' and which is 'nir' (near infrared) so that it can perform an 
 [NDVI](https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index) operation, for example. Each Asset should specify
 its own band object. If the individual bands are repeated in different assets they should all use the same values and 
-include the optional [`name`](#name) field to enable clients to easily combine and summarize the bands.
+include the optional bands `name` field to enable clients to easily combine and summarize the bands.
 
 The `eo:bands` array may optionally be used in the Item Properties to summarize the available bands in the assets. This should
 be a 'union' of all the possible bands represented in assets. It should be considered merely informative - clients should rely
