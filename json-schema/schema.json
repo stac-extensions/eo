@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://stac-extensions.github.io/eo/v1.1.0/schema.json#",
+  "$id": "https://stac-extensions.github.io/eo/v2.0.0/schema.json#",
   "title": "EO Extension",
   "description": "STAC EO Extension for STAC Items.",
   "oneOf": [
@@ -10,11 +10,22 @@
         {
           "type": "object",
           "required": [
+            "stac_version",
             "type",
             "properties",
             "assets"
           ],
           "properties": {
+            "stac_version": {
+              "oneOf": [
+                {
+                  "pattern": "^1.[0-9][0-9]*(?:.[0-9]+(?:-.+)?)?$"
+                },
+                {
+                  "pattern": "^[2-9][0-9]*.[0-9][0-9]*(?:.[0-9]+(?:-.+)?)?$"
+                }
+              ]
+            },
             "type": {
               "const": "Feature"
             },
@@ -22,48 +33,62 @@
               "$ref": "#/definitions/fields"
             },
             "assets": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/fields"
-              }
+              "type": "object"
             }
           },
-          "$comment": "The if-then-else below checks whether the eo:bands is given in assets or not. If yes, allows eo:bands in properties (else), otherwise, disallows eo:bands in properties (then).",
-          "if": {
-            "required": [
-              "assets"
-            ],
-            "properties": {
-              "assets": {
-                "type": "object",
-                "additionalProperties": {
+          "allOf": [
+            {
+              "$comment": "The oneOf checks whether the bands field is given in properties or in assets.",
+              "oneOf": [
+                {
+                  "required": [
+                    "properties"
+                  ],
                   "properties": {
-                    "eo:bands": false
+                    "properties": {
+                      "type": "object",
+                      "required": [
+                        "bands"
+                      ],
+                      "properties": {
+                        "bands": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/definitions/bands_fields"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "assets"
+                  ],
+                  "properties": {
+                    "assets": {
+                      "type": "object",
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/asset_with_bands"
+                        },
+                        {
+                          "additionalProperties": {
+                            "type": "object",
+                            "$ref": "#/definitions/fields"
+                          }
+                        }
+                      ],
+                      "$comment": "The 'not' below ensures that the bands is at least present once in the assets.",
+                      "not": {
+                        "$ref": "#/definitions/asset_without_bands"
+                      }
+                    }
                   }
                 }
-              }
+              ]
             }
-          },
-          "then": {
-            "properties": {
-              "properties": {
-                "properties": {
-                  "eo:bands": false
-                }
-              }
-            }
-          },
-          "else": {
-            "properties": {
-              "properties": {
-                "properties": {
-                  "eo:bands": {
-                    "$ref": "#/definitions/bands"
-                  }
-                }
-              }
-            }
-          }
+          ]
         },
         {
           "$ref": "#/definitions/stac_extensions"
@@ -79,22 +104,104 @@
             "type"
           ],
           "properties": {
+            "stac_version": {
+              "oneOf": [
+                {
+                  "pattern": "^1.[0-9][0-9]*(?:.[0-9]+(?:-.+)?)?$"
+                },
+                {
+                  "pattern": "^[2-9][0-9]*.[0-9][0-9]*(?:.[0-9]+(?:-.+)?)?$"
+                }
+              ]
+            },
             "type": {
               "const": "Collection"
             },
             "assets": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/fields"
-              }
+              "type": "object"
             },
             "item_assets": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/fields"
-              }
+              "type": "object"
             }
-          }
+          },
+          "allOf": [
+            {
+              "$comment": "The oneOf checks whether the bands field is given in summaries, assets or in item_assets.",
+              "anyOf": [
+                {
+                  "required": [
+                    "summaries"
+                  ],
+                  "properties": {
+                    "summaries": {
+                      "type": "object",
+                      "required": [
+                        "bands"
+                      ],
+                      "properties": {
+                        "bands": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/definitions/bands_fields"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "item_assets"
+                  ],
+                  "properties": {
+                    "assets": {
+                      "type": "object",
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/asset_with_bands"
+                        },
+                        {
+                          "additionalProperties": {
+                            "type": "object",
+                            "$ref": "#/definitions/fields"
+                          }
+                        }
+                      ],
+                      "$comment": "The 'not' below ensures that the bands is at least present once in the item_assets.",
+                      "not": {
+                        "$ref": "#/definitions/asset_without_bands"
+                      }
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "assets"
+                  ],
+                  "properties": {
+                    "assets": {
+                      "type": "object",
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/asset_with_bands"
+                        },
+                        {
+                          "additionalProperties": {
+                            "type": "object",
+                            "$ref": "#/definitions/fields"
+                          }
+                        }
+                      ],
+                      "$comment": "The 'not' below ensures that the bands is at least present once in the assets.",
+                      "not": {
+                        "$ref": "#/definitions/asset_without_bands"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "$ref": "#/definitions/stac_extensions"
@@ -112,9 +219,57 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://stac-extensions.github.io/eo/v1.1.0/schema.json"
+            "const": "https://stac-extensions.github.io/eo/v2.0.0/schema.json"
           }
         }
+      }
+    },
+    "asset_with_bands": {
+      "type": "object",
+      "allOf": [
+        {
+          "additionalProperties": {
+            "$ref": "#/definitions/bands_or_not"
+          }
+        }
+      ]
+    },
+    "asset_without_bands": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/bands_not_present"
+      }
+    },
+    "bands_or_not": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/bands_present"
+        },
+        {
+          "$ref": "#/definitions/bands_not_present"
+        }
+      ]
+    },
+    "bands_present": {
+      "type": "object",
+      "required": [
+        "bands"
+      ],
+      "properties": {
+        "bands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/bands_fields"
+          }
+        }
+      }
+    },
+    "bands_not_present": {
+      "type": "object",
+      "not": {
+        "required": [
+          "bands"
+        ]
       }
     },
     "fields": {
@@ -131,9 +286,6 @@
           "type": "number",
           "minimum": 0,
           "maximum": 100
-        },
-        "eo:bands": {
-          "$ref": "#/definitions/bands"
         }
       },
       "patternProperties": {
@@ -141,63 +293,51 @@
       },
       "additionalProperties": false
     },
-    "bands": {
-      "title": "Bands",
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "title": "Band",
-        "type": "object",
-        "minProperties": 1,
-        "properties": {
-          "name": {
-            "title": "Name of the band",
-            "type": "string"
-          },
-          "common_name": {
-            "title": "Common Name of the band",
-            "type": "string",
-            "enum": [
-              "coastal",
-              "blue",
-              "green",
-              "red",
-              "rededge",
-              "yellow",
-              "pan",
-              "nir",
-              "nir08",
-              "nir09",
-              "cirrus",
-              "swir16",
-              "swir22",
-              "lwir",
-              "lwir11",
-              "lwir12"
-            ]
-          },
-          "description": {
-            "title": "Description of the band",
-            "type": "string",
-            "minLength": 1
-          },
-          "center_wavelength": {
-            "title": "Center Wavelength",
-            "type": "number",
-            "minimumExclusive": 0
-          },
-          "full_width_half_max": {
-            "title": "Full Width Half Max (FWHM)",
-            "type": "number",
-            "minimumExclusive": 0
-          },
-          "solar_illumination": {
-            "title": "Solar Illumination",
-            "type": "number",
-            "minimum": 0
-          }
+    "bands_fields": {
+      "type": "object",
+      "properties": {
+        "eo:common_name": {
+          "title": "Common Name of the band",
+          "type": "string",
+          "enum": [
+            "coastal",
+            "blue",
+            "green",
+            "red",
+            "rededge",
+            "yellow",
+            "pan",
+            "nir",
+            "nir08",
+            "nir09",
+            "cirrus",
+            "swir16",
+            "swir22",
+            "lwir",
+            "lwir11",
+            "lwir12"
+          ]
+        },
+        "eo:center_wavelength": {
+          "title": "Center Wavelength",
+          "type": "number",
+          "minimumExclusive": 0
+        },
+        "eo:full_width_half_max": {
+          "title": "Full Width Half Max (FWHM)",
+          "type": "number",
+          "minimumExclusive": 0
+        },
+        "eo:solar_illumination": {
+          "title": "Solar Illumination",
+          "type": "number",
+          "minimum": 0
         }
-      }
+      },
+      "patternProperties": {
+        "^(?!eo:)": {}
+      },
+      "additionalProperties": false
     }
   }
 }
