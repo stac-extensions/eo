@@ -1,280 +1,185 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://stac-extensions.github.io/eo/v2.0.0/schema.json#",
+  "$id": "https://stac-extensions.github.io/eo/v1.1.0/schema.json#",
   "title": "EO Extension",
   "description": "STAC EO Extension for STAC Items.",
+  "type": "object",
+  "required": [
+    "stac_extensions"
+  ],
+  "properties": {
+    "stac_extensions": {
+      "type": "array",
+      "contains": {
+        "const": "https://stac-extensions.github.io/eo/v1.1.0/schema.json"
+      }
+    }
+  },
   "oneOf": [
     {
       "$comment": "This is the schema for STAC Items.",
-      "allOf": [
-        {
+      "type": "object",
+      "required": [
+        "type",
+        "properties",
+        "assets"
+      ],
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "properties": {
+          "$ref": "#/definitions/fields"
+        },
+        "assets": {
           "type": "object",
-          "required": [
-            "stac_version",
-            "type",
-            "properties",
-            "assets"
-          ],
+          "additionalProperties": {
+            "$ref": "#/definitions/fields"
+          }
+        }
+      },
+      "anyOf": [
+        {
           "properties": {
-            "stac_version": {
-              "oneOf": [
-                {
-                  "pattern": "^1.[0-9][0-9]*(?:.[0-9]+(?:-.+)?)?$"
-                },
-                {
-                  "pattern": "^[2-9][0-9]*.[0-9][0-9]*(?:.[0-9]+(?:-.+)?)?$"
-                }
-              ]
-            },
-            "type": {
-              "const": "Feature"
-            },
             "properties": {
-              "$ref": "#/definitions/fields"
-            },
-            "assets": {
-              "type": "object"
+              "$ref": "#/definitions/require_any"
             }
-          },
-          "allOf": [
-            {
-              "$comment": "The oneOf checks whether the bands field is given in properties or in assets.",
-              "oneOf": [
-                {
-                  "required": [
-                    "properties"
-                  ],
-                  "properties": {
-                    "properties": {
-                      "type": "object",
-                      "required": [
-                        "bands"
-                      ],
-                      "properties": {
-                        "bands": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/definitions/bands_fields"
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "required": [
-                    "assets"
-                  ],
-                  "properties": {
-                    "assets": {
-                      "type": "object",
-                      "allOf": [
-                        {
-                          "$ref": "#/definitions/asset_with_bands"
-                        },
-                        {
-                          "additionalProperties": {
-                            "type": "object",
-                            "$ref": "#/definitions/fields"
-                          }
-                        }
-                      ],
-                      "$comment": "The 'not' below ensures that the bands is at least present once in the assets.",
-                      "not": {
-                        "$ref": "#/definitions/asset_without_bands"
-                      }
-                    }
-                  }
-                }
-              ]
-            }
-          ]
+          }
         },
         {
-          "$ref": "#/definitions/stac_extensions"
+          "$ref": "#/definitions/require_in_assets"
         }
       ]
     },
     {
       "$comment": "This is the schema for STAC Collections.",
-      "allOf": [
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "const": "Collection"
+        },
+        "assets": {
+          "$ref": "#/definitions/fields"
+        },
+        "item_assets": {
+          "$ref": "#/definitions/fields"
+        }
+      },
+      "anyOf": [
         {
-          "type": "object",
-          "required": [
-            "type"
-          ],
-          "properties": {
-            "stac_version": {
-              "oneOf": [
-                {
-                  "pattern": "^1.[0-9][0-9]*(?:.[0-9]+(?:-.+)?)?$"
-                },
-                {
-                  "pattern": "^[2-9][0-9]*.[0-9][0-9]*(?:.[0-9]+(?:-.+)?)?$"
-                }
-              ]
-            },
-            "type": {
-              "const": "Collection"
-            },
-            "assets": {
-              "type": "object"
-            },
-            "item_assets": {
-              "type": "object"
-            }
-          },
-          "allOf": [
-            {
-              "$comment": "The oneOf checks whether the bands field is given in summaries, assets or in item_assets.",
-              "anyOf": [
-                {
-                  "required": [
-                    "summaries"
-                  ],
-                  "properties": {
-                    "summaries": {
-                      "type": "object",
-                      "required": [
-                        "bands"
-                      ],
-                      "properties": {
-                        "bands": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/definitions/bands_fields"
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "required": [
-                    "item_assets"
-                  ],
-                  "properties": {
-                    "assets": {
-                      "type": "object",
-                      "allOf": [
-                        {
-                          "$ref": "#/definitions/asset_with_bands"
-                        },
-                        {
-                          "additionalProperties": {
-                            "type": "object",
-                            "$ref": "#/definitions/fields"
-                          }
-                        }
-                      ],
-                      "$comment": "The 'not' below ensures that the bands is at least present once in the item_assets.",
-                      "not": {
-                        "$ref": "#/definitions/asset_without_bands"
-                      }
-                    }
-                  }
-                },
-                {
-                  "required": [
-                    "assets"
-                  ],
-                  "properties": {
-                    "assets": {
-                      "type": "object",
-                      "allOf": [
-                        {
-                          "$ref": "#/definitions/asset_with_bands"
-                        },
-                        {
-                          "additionalProperties": {
-                            "type": "object",
-                            "$ref": "#/definitions/fields"
-                          }
-                        }
-                      ],
-                      "$comment": "The 'not' below ensures that the bands is at least present once in the assets.",
-                      "not": {
-                        "$ref": "#/definitions/asset_without_bands"
-                      }
-                    }
-                  }
-                }
-              ]
-            }
-          ]
+          "$ref": "#/definitions/require_in_item_assets"
         },
         {
-          "$ref": "#/definitions/stac_extensions"
+          "$ref": "#/definitions/require_in_assets"
+        },
+        {
+          "properties": {
+            "summaries": {
+              "$ref": "#/definitions/require_any"
+            }
+          }
         }
       ]
     }
   ],
   "definitions": {
-    "stac_extensions": {
-      "type": "object",
-      "required": [
-        "stac_extensions"
-      ],
-      "properties": {
-        "stac_extensions": {
-          "type": "array",
-          "contains": {
-            "const": "https://stac-extensions.github.io/eo/v2.0.0/schema.json"
-          }
-        }
-      }
-    },
-    "asset_with_bands": {
-      "type": "object",
-      "allOf": [
+    "require_any": {
+      "anyOf": [
         {
-          "additionalProperties": {
-            "$ref": "#/definitions/bands_or_not"
-          }
-        }
-      ]
-    },
-    "asset_without_bands": {
-      "type": "object",
-      "additionalProperties": {
-        "$ref": "#/definitions/bands_not_present"
-      }
-    },
-    "bands_or_not": {
-      "oneOf": [
-        {
-          "$ref": "#/definitions/bands_present"
+          "required": [
+            "eo:cloud_cover"
+          ]
         },
         {
-          "$ref": "#/definitions/bands_not_present"
+          "required": [
+            "eo:snow_cover"
+          ]
+        },
+        {
+          "required": [
+            "eo:common_name"
+          ]
+        },
+        {
+          "required": [
+            "eo:center_wavelength"
+          ]
+        },
+        {
+          "required": [
+            "eo:full_width_half_max"
+          ]
+        },
+        {
+          "required": [
+            "eo:solar_illumination"
+          ]
+        },
+        {
+          "$ref": "#/definitions/require_in_bands"
         }
       ]
     },
-    "bands_present": {
-      "type": "object",
+    "require_in_bands": {
       "required": [
         "bands"
       ],
       "properties": {
         "bands": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/bands_fields"
+          "not": {
+            "additionalProperties": {
+              "not": {
+                "$ref": "#/definitions/require_any"
+              }
+            }
           }
         }
       }
     },
-    "bands_not_present": {
-      "type": "object",
-      "not": {
-        "required": [
-          "bands"
-        ]
+    "require_in_assets": {
+      "required": [
+        "assets"
+      ],
+      "properties": {
+        "assets": {
+          "not": {
+            "additionalProperties": {
+              "not": {
+                "$ref": "#/definitions/require_any"
+              }
+            }
+          }
+        }
+      }
+    },
+    "require_in_item_assets": {
+      "required": [
+        "item_assets"
+      ],
+      "properties": {
+        "item_assets": {
+          "not": {
+            "additionalProperties": {
+              "not": {
+                "$ref": "#/definitions/require_any"
+              }
+            }
+          }
+        }
       }
     },
     "fields": {
       "type": "object",
       "properties": {
+        "bands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/fields"
+          }
+        },
         "eo:cloud_cover": {
           "title": "Cloud Cover",
           "type": "number",
@@ -286,16 +191,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 100
-        }
-      },
-      "patternProperties": {
-        "^(?!eo:)": {}
-      },
-      "additionalProperties": false
-    },
-    "bands_fields": {
-      "type": "object",
-      "properties": {
+        },
         "eo:common_name": {
           "title": "Common Name of the band",
           "type": "string",

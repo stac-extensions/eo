@@ -6,8 +6,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [v2.0.0]
-
 ### Changed
 
 - Update EO stac extension for STAC 1.1 and new [`bands` object](https://github.com/radiantearth/stac-spec/pull/1254)
@@ -39,6 +37,5 @@ Initial independent release, see [previous history](https://github.com/radiantea
 - `common_name` is validated as an enum (no other values allowed)
 
 [Unreleased]: <https://github.com/stac-extensions/eo/compare/v1.1.0...HEAD>
-[v2.0.0]: <https://github.com/stac-extensions/eo/compare/v1.1.0...v2.0.0>
 [v1.1.0]: <https://github.com/stac-extensions/eo/compare/v1.0.0...v1.1.0>
 [v1.0.0]: <https://github.com/stac-extensions/eo/tree/v1.0.0>

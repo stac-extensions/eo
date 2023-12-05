@@ -1,7 +1,7 @@
 # Electro-Optical Extension Specification
 
 - **Title:** Electro-Optical
-- **Identifier:** <https://stac-extensions.github.io/eo/v2.0.0/schema.json>
+- **Identifier:** <https://stac-extensions.github.io/eo/v1.1.0/schema.json>
 - **Field Name Prefix:** eo
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Stable
@@ -10,9 +10,6 @@
 
 This document explains the fields of the Electro-Optical (EO) Extension to the
 [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
-
-> \[!IMPORTANT]
-> From version 2.0.0, the EO extension is only applicable to STAC resources from specification 1.1.0 or earlier.
 
 EO data is considered to be data that represents a snapshot of the Earth for a single date and time. It
 could consist of multiple spectral bands in any part of the electromagnetic spectrum. Examples of EO
@@ -36,9 +33,9 @@ The fields in the table below can be used in these parts of STAC documents:
 
 - [ ] Catalogs
 - [ ] Collections
-- [ ] Item Properties (incl. Summaries in Collections)
-- [ ] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
-- [X] Bands
+- [x] Item Properties (incl. Summaries in Collections)
+- [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
+- [x] Bands
 - [ ] Links
 
 | Field Name             | Type   | Description                                                                                                                                                        |
@@ -53,22 +50,21 @@ The fields in the table below can be used in these parts of STAC documents:
 
 *At least one of the fields must be specified.*
 
-### eo:bands
+### bands (formerly eo:bands)
 
-The `eo:bands` array is used to describe the available [spectral 
-bands](https://www.sciencedirect.com/topics/earth-and-planetary-sciences/spectral-band) in an Asset. This enables clients to read  
-the file and understand which band is 'red' and which is 'nir' (near infrared) so that it can perform an 
+This extension formerly had a field `eo:bands`, which has been removed in favor of a general field `bands`
+in STAC common metadata. The structure is the same, it's an array of Band Objects. 
+The fields in the Band Object may change, fields from the EO extension will have a `eo:` prefix, but some more
+general fields like `description` have been moved to common metadata and don't need a prefix and as such don't change.
+Please note that bands in Item Properties are not the union of all bands in the assets any longer.
+If you specify bands in the Item Properties, the bands apply to all assets unless you have a bands object at the asset level.
+
+The presence of one of the `eo:` fields in a Band Object makes the band 
+"[spectral](https://www.sciencedirect.com/topics/earth-and-planetary-sciences/spectral-band)".
+This enables clients to read the file and understand which band is 'red' and which is 'nir' (near infrared) so that it can perform an 
 [NDVI](https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index) operation, for example. Each Asset should specify
 its own band object. If the individual bands are repeated in different assets they should all use the same values and 
 include the optional bands `name` field to enable clients to easily combine and summarize the bands.
-
-The `eo:bands` array may optionally be used in the Item Properties to summarize the available bands in the assets. This should
-be a 'union' of all the possible bands represented in assets. It should be considered merely informative - clients should rely
-on the `eo:bands` of each asset. An Item is only allowed to use `eo:bands` in its Properties if it has at least one asset with 
-a defined bands array.
-
-**NOTE**: In STAC versions 0.9.x and prior, `eo:bands` could only be used by an Asset putting the Band Object definitions in 
-an Item Properties and referencing these via array index. 1.0.0-beta.1 introduced the current behavior.
 
 ### eo:cloud_cover
 
