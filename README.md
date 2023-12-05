@@ -43,7 +43,6 @@ The fields in the table below can be used in these parts of STAC documents:
 | eo:cloud_cover         | number | Estimate of cloud cover                                                                                                                                            |
 | eo:snow_cover          | number | Estimate of snow and ice cover                                                                                                                                     |
 | eo:common_name         | string | The name commonly used to refer to the band to make it easier to search for bands across instruments. See the [list of accepted common names](#common-band-names). |
-| eo:description         | string | Description to fully explain the band. [CommonMark 0.29](http://commonmark.org/) syntax MAY be used for rich text representation.                                  |
 | eo:center_wavelength   | number | The center wavelength of the band, in micrometers (μm).                                                                                                            |
 | eo:full_width_half_max | number | Full width at half maximum (FWHM). The width of the band, as measured at half the maximum transmission, in micrometers (μm).                                       |
 | eo:solar_illumination  | number | The solar illumination of the band, as measured at half the maximum transmission, in W/m2/micrometers.                                                             |
