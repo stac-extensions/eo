@@ -6,6 +6,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `eo:cloud_cover` and `eo:snow_cover` can be used in bands
+- `eo:common_name`, `eo:center_wavelength`, `eo:full_width_half_max` and `eo:solar_illumination` can be used in Assets and Item Properties
+
+### Changed
+
+- `eo:bands` is now using the more general `bands` construct from STAC common metadata
+- The following fields in the Band Object have been moved/renamed:
+  - `name` was *not* renamed, but has been moved to STAC common metadata
+  - `description` was *not* renamed, but has been moved to STAC common metadata
+  - `common_name` has been renamed to `eo:common_name`
+  - `center_wavelength` has been renamed to `eo:center_wavelength`
+  - `full_width_half_max` has been renamed to `eo:full_width_half_max`
+  - `solar_illumination` has been renamed to `eo:solar_illumination`
+- The bands in Item Properties are not meant to be the union of the asset bands any longer
+  You usually don't list bands in Item Properties any longer unless all assets have the same bands.
+
+### Removed
+
+- `eo:bands` - use `bands` instead
+
 ## [v1.1.0] - 2023-02-10
 
 ### Added
