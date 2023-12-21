@@ -32,8 +32,8 @@ For defining view geometry of data, it is strongly recommended to use the [`view
 | Field Name     | Type                           | Description |
 | -------------- | ------------------------------ | ----------- |
 | eo:bands       | \[[Band Object](#band-object)] | An array of available bands where each object is a [Band Object](#band-object). If given, requires at least one band. |
-| eo:cloud_cover | number                         | Estimate of cloud cover |
-| eo:snow_cover  | number                         | Estimate of snow and ice cover |
+| eo:cloud_cover | number                         | Estimate of cloud cover, in % |
+| eo:snow_cover  | number                         | Estimate of snow and ice cover, in % |
 
 ### Additional Field Information
 
