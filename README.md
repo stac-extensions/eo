@@ -40,8 +40,8 @@ The fields in the table below can be used in these parts of STAC documents:
 
 | Field Name             | Type   | Description                                                                                                                                                        |
 | ---------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| eo:cloud_cover         | number | Estimate of cloud cover, in %.                                                                                                                                     |
-| eo:snow_cover          | number | Estimate of snow and ice cover, in %.                                                                                                                              |
+| eo:cloud_cover         | number | Estimate of cloud cover as a percentage (0-100).                                                                                                                   |
+| eo:snow_cover          | number | Estimate of snow and ice cover as a percentage (0-100).                                                                                                            |
 | eo:common_name         | string | The name commonly used to refer to the band to make it easier to search for bands across instruments. See the [list of accepted common names](#common-band-names). |
 | eo:center_wavelength   | number | The center wavelength of the band, in micrometers (μm).                                                                                                            |
 | eo:full_width_half_max | number | Full width at half maximum (FWHM). The width of the band, as measured at half the maximum transmission, in micrometers (μm).                                       |
@@ -51,17 +51,15 @@ The fields in the table below can be used in these parts of STAC documents:
 
 ### Coverages
 
-#### eo:cloud_cover
+This extension defines some common coverage types (cloud and snow/ice cover) as a percentages (0-100) of the entire scene:
+- `eo:cloud_cover`
+- `eo:snow_cover`
 
-Estimate of cloud cover as a percentage (0-100) of the entire scene. If not available, the field should not be provided. Generally,
-this value should be used in Item Properties rather than Item Assets, as an Item from an electro-optical source is a single snapshot
-of the Earth, so the cloud cover value would apply to all assets.
+It is important to consider only the valid data regions, excluding any "nodata" areas while calculating both the coverages.
+If such information is not available or can't be calculated, the fields should not be provided.
 
-##### eo:snow_cover
-
-Estimate of snow and ice covered surfaces as a percentage (0-100) of the entire scene. If not available, the field should not be provided. Generally,
-this value should be used in Item Properties rather than Item Assets, as an Item from an electro-optical source is a single snapshot
-of the Earth, so the snow cover value would apply to all assets.
+Usually, the properties should be used in Item Properties rather than Item Assets,
+as an Item from an electro-optical source is a single snapshot of the Earth, so the coverages usually apply to all assets.
 
 ### Spectral Bands
 
