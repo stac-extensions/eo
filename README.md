@@ -16,10 +16,10 @@ could consist of multiple spectral bands in any part of the electromagnetic spec
 data include sensors with visible, short-wave and mid-wave IR bands (e.g., the OLI instrument on
 Landsat-8), long-wave IR bands (e.g. TIRS aboard Landsat-8).
 
-It is strongly recommended to use [Instrument Fields](https://github.com/radiantearth/stac-spec/tree/master/item-spec/common-metadata.md#instrument) 
+It is strongly recommended to use [Instrument Fields](https://github.com/radiantearth/stac-spec/tree/master/item-spec/common-metadata.md#instrument)
 with the EO extension, to provide information about the platform (satellite, aerial, etc) used to capture the images.
 
-For defining view geometry of data, it is strongly recommended to use the [`view` extension](https://github.com/stac-extensions/view).
+For defining view geometry of data, it is strongly recommended to use the [View Extension](https://github.com/stac-extensions/view).
 
 - Examples:
   - [Collection example](examples/collection.json)
@@ -49,47 +49,51 @@ The fields in the table below can be used in these parts of STAC documents:
 
 *At least one of the fields must be specified.*
 
-### bands
+### Coverages
 
-This extension formerly had a field `eo:bands`, which has been removed in favor of a general field `bands`
-in STAC common metadata. The structure is the same, it's an array of Band Objects. 
-The fields in the Band Object may change, fields from the EO extension will have a `eo:` prefix, but some more
-general fields like `description` have been moved to common metadata and don't need a prefix and as such don't change.
-Please note that bands in Item Properties are not the union of all bands in the assets any longer.
-If you specify bands in the Item Properties, the bands apply to all assets unless you have a bands object at the asset level.
+#### eo:cloud_cover
 
-The presence of one of the `eo:` fields in a Band Object makes the band 
+Estimate of cloud cover as a percentage (0-100) of the entire scene. If not available, the field should not be provided. Generally,
+this value should be used in Item Properties rather than Item Assets, as an Item from an electro-optical source is a single snapshot
+of the Earth, so the cloud cover value would apply to all assets.
+
+##### eo:snow_cover
+
+Estimate of snow and ice covered surfaces as a percentage (0-100) of the entire scene. If not available, the field should not be provided. Generally,
+this value should be used in Item Properties rather than Item Assets, as an Item from an electro-optical source is a single snapshot
+of the Earth, so the snow cover value would apply to all assets.
+
+### Spectral Bands
+
+> \[!NOTE]
+> This extension formerly had a field `eo:bands`, which has been removed in favor of a general field `bands`
+> in STAC common metadata. The structure is the same, it's an array of Band Objects.
+> The fields in the Band Object may change, fields from the EO extension will have a `eo:` prefix, but some more
+> general fields like `description` have been moved to common metadata and don't need a prefix and as such don't change.
+> Please note that bands in Item Properties are not the union of all bands in the assets any longer.
+> If you specify bands in the Item Properties, the bands apply to all assets unless you have a bands object at the asset level.
+
+The presence of one of the `eo:` fields in a Band Object makes the band
 "[spectral](https://www.sciencedirect.com/topics/earth-and-planetary-sciences/spectral-band)".
-This enables clients to read the file and understand which band is 'red' and which is 'nir' (near infrared) so that it can perform an 
-[NDVI](https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index) operation, for example. Each Asset should specify
-its own band object. If the individual bands are repeated in different assets they should all use the same values and 
+This enables clients to read the file and understand which band is 'red' and which is 'nir' (near infrared) so that it can perform an
+[NDVI](https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index) operation, for example.
+Each Asset should specify its own band object.
+If the individual bands are repeated in different assets they should all use the same values and
 include the optional bands `name` field to enable clients to easily combine and summarize the bands.
-
-### eo:cloud_cover
-
-Estimate of cloud cover as a percentage (0-100) of the entire scene. If not available, the field should not be provided. Generally, 
-this value should be used in Item Properties rather than Item Assets, as an Item from an electro-optical source is a single snapshot 
-of the Earth, so the cloud cover value would apply to all assets. 
-
-#### eo:snow_cover
-
-Estimate of snow and ice covered surfaces as a percentage (0-100) of the entire scene. If not available, the field should not be provided. Generally, 
-this value should be used in Item Properties rather than Item Assets, as an Item from an electro-optical source is a single snapshot 
-of the Earth, so the snow cover value would apply to all assets. 
 
 #### eo:center_wavelength and eo:full_width_half_max
 
-These fields are a common way to approximately describe a spectral band. In most cases even these numbers are not as useful as the 
-`eo:common_name` that should be supplied with the spectral bands, where they exist. For non-standard bands (such as with hyperspectral sensors) 
+These fields are a common way to approximately describe a spectral band. In most cases even these numbers are not as useful as the
+`eo:common_name` that should be supplied with the spectral bands, where they exist. For non-standard bands (such as with hyperspectral sensors)
 the wavelength fields indicate where the band is.
 
-Another common way to define a spectral band with a minimum and maximum wavelength, where outside these bounds the transmission is 0%, 
-and non-zero inside the bounds (e.g., 80%). The maximum transmission of a band is not captured in any of these metrics, 
+Another common way to define a spectral band with a minimum and maximum wavelength, where outside these bounds the transmission is 0%,
+and non-zero inside the bounds (e.g., 80%). The maximum transmission of a band is not captured in any of these metrics,
 nor is it important in most cases.
 
-However, spectral transmission for a filter does not go from 0% to a constant max value (e.g., 80%) then back to 0%. Such a filter is 
-referred to as a "top-hat" filter due to it's shape, but does not exist in reality. Thus, the minimum and maximum wavelengths are 
-typically selected to be the point at which transmission drops below some threshold, and this threshold is often half of the maximum 
+However, spectral transmission for a filter does not go from 0% to a constant max value (e.g., 80%) then back to 0%. Such a filter is
+referred to as a "top-hat" filter due to it's shape, but does not exist in reality. Thus, the minimum and maximum wavelengths are
+typically selected to be the point at which transmission drops below some threshold, and this threshold is often half of the maximum
 transmission. Thus if a filter's maximum transmission is 80%, the min and max thresholds would be the points where the transmission drops below 40%.
 
 The `eo:center_wavelength` of a band is the midpoint between the min and max wavelengths:
@@ -98,18 +102,18 @@ The `eo:center_wavelength` of a band is the midpoint between the min and max wav
 center_wavelength = (min_wavelength + max_wavelength) / 2
 ```
 
-The `eo:full_width_half_max` (FWHM) is the difference between the min and max wavelengths, 
+The `eo:full_width_half_max` (FWHM) is the difference between the min and max wavelengths,
 thus representing the width of the band at half it's maximum transmission.
 
 ```python
 full_width_half_max = max_wavelength - min_wavelength
 ```
 
-For example, if we were given a band described as (0.4um - 0.5um) the `eo:center_wavelength` would be 0.45um 
+For example, if we were given a band described as (0.4um - 0.5um) the `eo:center_wavelength` would be 0.45um
 and the `eo:full_width_half_max` would be 0.1um.
 
 In some cases the full transmission profile is needed, such as when harmonizing between two sensor modalities. It is recommended
- that the full spectral profile be included as a link or an asset (preferably at the 
+ that the full spectral profile be included as a link or an asset (preferably at the
  [Collection](https://github.com/radiantearth/stac-spec/tree/master/collection-spec/collection-spec.md) level).
 
 #### eo:solar_illumination
@@ -149,14 +153,14 @@ numbers of several popular instruments.
 | lwir11      | 10.5 - 11.5     |               | 10        |            | 31    |      |
 | lwir12      | 11.5 - 12.5     |               | 11        |            | 32    |      |
 
-The difference between the `nir`, `nir08`, and `nir09` bands are that the `nir` band is a wider band that covers 
-most of the spectral range of 0.75μm to 1.0μm. `nir08` and `nir09` are narrow bands centered 0.85μm and 0.95μm 
+The difference between the `nir`, `nir08`, and `nir09` bands are that the `nir` band is a wider band that covers
+most of the spectral range of 0.75μm to 1.0μm. `nir08` and `nir09` are narrow bands centered 0.85μm and 0.95μm
 respectively. The same goes for the difference between `lwir`, `lwir11` and `lwir12`.
 
 ## Best Practices
 
 One of the emerging best practices is to use [Asset Roles](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#asset-roles)
-to provide clients with more information about the assets in an item. The following list includes a shared vocabulary for some common EO assets. 
+to provide clients with more information about the assets in an item. The following list includes a shared vocabulary for some common EO assets.
 This list should not be considered definitive, and implementors are welcome to use other asset roles. If consensus and tooling consolidates around
 these role names then they will be specified in the future as more standard than just 'best practices'.
 
@@ -178,16 +182,18 @@ for running tests are copied here for convenience.
 
 ### Running tests
 
-The same checks that run as checks on PR's are part of the repository and can be run locally to verify that changes are valid. 
+The same checks that run as checks on PR's are part of the repository and can be run locally to verify that changes are valid.
 To run tests locally, you'll need `npm`, which is a standard part of any [node.js installation](https://nodejs.org/en/download/).
 
-First you'll need to install everything with npm once. Just navigate to the root of this repository and on 
+First you'll need to install everything with npm once. Just navigate to the root of this repository and on
 your command line run:
+
 ```bash
 npm install
 ```
 
 Then to check markdown formatting and test the examples against the JSON schema, you can run:
+
 ```bash
 npm test
 ```
@@ -195,6 +201,7 @@ npm test
 This will spit out the same texts that you see online, and you can then go and fix your markdown or examples.
 
 If the tests reveal formatting problems with the examples, you can fix them with:
+
 ```bash
 npm run format-examples
 ```
