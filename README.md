@@ -49,7 +49,7 @@ The fields in the table below can be used in these parts of STAC documents:
 
 *At least one of the fields must be specified.*
 
-### bands (formerly eo:bands)
+### bands
 
 This extension formerly had a field `eo:bands`, which has been removed in favor of a general field `bands`
 in STAC common metadata. The structure is the same, it's an array of Band Objects. 
