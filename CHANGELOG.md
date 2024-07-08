@@ -1,4 +1,5 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
@@ -9,14 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `eo:cloud_cover` and `eo:snow_cover` can be used in bands
-- `eo:common_name`, `eo:center_wavelength`, `eo:full_width_half_max` and `eo:solar_illumination` can be used in Assets and Item Properties
+- `eo:common_name`, `eo:center_wavelength`, `eo:full_width_half_max` and `eo:solar_illumination`
+  can be used in Assets and Item Properties
 
 ### Changed
 
 - `eo:bands` is now using the more general `bands` construct from STAC common metadata
 - The following fields in the Band Object have been moved/renamed:
-  - `name` was *not* renamed, but has been moved to STAC common metadata
-  - `description` was *not* renamed, but has been moved to STAC common metadata
+  - `name` and `description` were *not* renamed, but have been moved to STAC common metadata
   - `common_name` has been renamed to `eo:common_name`
   - `center_wavelength` has been renamed to `eo:center_wavelength`
   - `full_width_half_max` has been renamed to `eo:full_width_half_max`

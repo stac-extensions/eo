@@ -42,7 +42,7 @@
         {
           "properties": {
             "properties": {
-              "$ref": "#/definitions/require_any"
+              "$ref": "#/definitions/require_any_or_bands"
             }
           }
         },
@@ -78,7 +78,7 @@
         {
           "properties": {
             "summaries": {
-              "$ref": "#/definitions/require_any"
+              "$ref": "#/definitions/require_any_or_bands"
             }
           }
         }
@@ -86,41 +86,24 @@
     }
   ],
   "definitions": {
-    "require_any": {
+    "require_any_or_bands": {
       "anyOf": [
         {
-          "required": [
-            "eo:cloud_cover"
-          ]
-        },
-        {
-          "required": [
-            "eo:snow_cover"
-          ]
-        },
-        {
-          "required": [
-            "eo:common_name"
-          ]
-        },
-        {
-          "required": [
-            "eo:center_wavelength"
-          ]
-        },
-        {
-          "required": [
-            "eo:full_width_half_max"
-          ]
-        },
-        {
-          "required": [
-            "eo:solar_illumination"
-          ]
+          "$ref": "#/definitions/require_any"
         },
         {
           "$ref": "#/definitions/require_in_bands"
         }
+      ]
+    },
+    "require_any": {
+      "anyOf": [
+        {"required": ["eo:cloud_cover"]},
+        {"required": ["eo:snow_cover"]},
+        {"required": ["eo:common_name"]},
+        {"required": ["eo:center_wavelength"]},
+        {"required": ["eo:full_width_half_max"]},
+        {"required": ["eo:solar_illumination"]}
       ]
     },
     "require_in_bands": {
@@ -129,12 +112,9 @@
       ],
       "properties": {
         "bands": {
-          "not": {
-            "additionalProperties": {
-              "not": {
-                "$ref": "#/definitions/require_any"
-              }
-            }
+          "type": "array",
+          "contains": {
+            "$ref": "#/definitions/require_any"
           }
         }
       }
@@ -148,7 +128,7 @@
           "not": {
             "additionalProperties": {
               "not": {
-                "$ref": "#/definitions/require_any"
+                "$ref": "#/definitions/require_any_or_bands"
               }
             }
           }
@@ -164,7 +144,7 @@
           "not": {
             "additionalProperties": {
               "not": {
-                "$ref": "#/definitions/require_any"
+                "$ref": "#/definitions/require_any_or_bands"
               }
             }
           }
