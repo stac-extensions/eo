@@ -28,6 +28,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `eo:bands` - use `bands` instead
 
+### Fixed
+
+- Clarified how the coverages `eo:cloud_cover` and `eo:snow_cover` should be computed
+
 ## [v1.1.0] - 2023-02-10
 
 ### Added
