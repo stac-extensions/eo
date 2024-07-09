@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `solar_illumination` field for the solar illumination value of the asset.
-- Added new common names for `rededge715`, `rededge745` and `rededge775`
+- Added new common names for `rededge700`, `rededge725`, `rededge750` and `rededge775`
 
 ### Changed
 
