@@ -132,7 +132,7 @@ The band's `eo:common_name` is the name that is commonly used to refer to that b
 properties. The table below shows the allowed common names based on the average band range for the band
 numbers of several popular instruments.
 
-| Common Name | Band Range (μm) | Landsat 5/7   | Landsat 8 | Sentinel 2 | MODIS | NAIP |
+| Common Name | Band Range (μm) | Landsat 5/7   | Landsat 8 | Sentinel-2 | MODIS | NAIP |
 | ----------- | --------------- | ------------- | --------- | ---------- | ----- | ---- |
 | coastal     | 0.40 - 0.45     |               | 1         | 1          |       |      |
 | blue        | 0.45 - 0.50     | 1             | 2         | 2          | 3     | 3    |
@@ -142,7 +142,7 @@ numbers of several popular instruments.
 | pan         | 0.50 - 0.70     | 8 (*L7 only*) | 8         |            |       |      |
 | rededge     | 0.70 - 0.79     |               |           | 5, 6, 7    |       |      |
 | rededge700  | 0.70 - 0.72     |               |           | 5          |       |      |
-| rededge725  | 0.72 - 0.74     |               |           | 5          |       |      |
+| rededge725  | 0.72 - 0.74     |               |           |            |       |      |
 | rededge750  | 0.74 - 0.76     |               |           | 6          |       |      |
 | rededge775  | 0.76 - 0.79     |               |           | 7          |       |      |
 | nir         | 0.75 - 1.00     | 4             |           | 8          | 2     | 4    |

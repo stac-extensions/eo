@@ -9,7 +9,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `solar_illumination` field for the solar illumination value of the asset.
 - Added new common names for `rededge700`, `rededge725`, `rededge750` and `rededge775`
 - `eo:cloud_cover` and `eo:snow_cover` can be used in bands
 - `eo:common_name`, `eo:center_wavelength`, `eo:full_width_half_max` and `eo:solar_illumination`
