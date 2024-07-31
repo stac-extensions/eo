@@ -159,6 +159,9 @@ The difference between the `nir`, `nir08`, and `nir09` bands are that the `nir` 
 most of the spectral range of 0.76μm to 1.0μm. `nir08` and `nir09` are narrow bands centered 0.85μm and 0.95μm
 respectively. The same applies for all variants that have numerical suffixes, e.g. green, lwir and rededge.
 
+Common band names should be uniquely assigned, i.e. there should never be two bands that share the same common
+name in an Item or Collection.
+
 ## Best Practices
 
 One of the emerging best practices is to use [Asset Roles](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#asset-roles)
