@@ -1,7 +1,7 @@
 # Electro-Optical Extension Specification
 
 - **Title:** Electro-Optical
-- **Identifier:** <https://stac-extensions.github.io/eo/v1.1.0/schema.json>
+- **Identifier:** <https://stac-extensions.github.io/eo/v2.0.0-beta.1/schema.json>
 - **Field Name Prefix:** eo
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Stable
