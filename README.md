@@ -132,33 +132,32 @@ The band's `eo:common_name` is the name that is commonly used to refer to that b
 properties. The table below shows the allowed common names based on the average band range for the band
 numbers of several popular instruments.
 
-| Common Name | Band Range (μm) | Landsat 5 TM / 7 ETM+ | Landsat 8 | Landsat Next | Sentinel-2 | Sentinel-3 OLCI / SLSTR | MODIS | NAIP | Planetscope |
-| ----------- | --------------- | --------------------- | --------- | ------------ | ---------- | ----------------------- | ----- | ---- | ----------- |
-| pan         | 0.40 - 1.00     | - / 8                 | 8         |              |            |                         |       |      |             |
-| coastal     | 0.42 - 0.45     |                       | 1         | 2            | 1          | 3 / -                   |       |      | 1           |
-| blue        | 0.45 - 0.50     | 1                     | 2         | 3            | 2          | 4 / -                   | 3     | 3    | 2           |
-| green       | 0.50 - 0.60     | 2                     | 3         | 4            | 3          | 6 / 1                   | 4     | 2    | 4           |
-| yellow      | 0.58 - 0.62     |                       |           | 5            |            | 7 / -                   |       |      | 5           |
-| red         | 0.60 - 0.70     | 3                     | 4         | 8            | 4          | 9 / 2                   | 1     | 1    |             |
-| rededge     | 0.69 - 0.79     |                       |           |              |            |                         |       |      |             |
-| rededge071  | 0.69 - 0.73     |                       |           | 9            | 5          | 11 / -                  |       |      | 7           |
-| rededge075  | 0.73 - 0.76     |                       |           | 10           | 6          | 12 / -                  |       |      |             |
-| rededge078  | 0.76 - 0.79     |                       |           |              | 7          | 16 / -                  |       |      |             |
-| nir         | 0.75 - 1.00     | 4                     |           | 11           | 8          |                         | 2     | 4    |             |
-| nir08       | 0.75 - 0.90     |                       | 5         | 12           | 8a         | 17 / 3                  |       |      |             |
-| nir09       | 0.85 - 1.05     |                       |           | 13           | 9          | 20 / -                  |       |      |             |
-| cirrus      | 1.35 - 1.40     |                       | 9         | 17           | 10         | - / 4                   | 26    |      |             |
-| swir16      | 1.55 - 1.75     | 5                     | 6         | 18           | 11         | - / 5                   | 6     |      |             |
-| swir22      | 2.10 - 2.30     | 7                     | 7         | 21           | 12         | - / 6                   | 7     |      |             |
-| lwir        | 10.5 - 12.5     | 6                     |           |              |            |                         |       |      |             |
-| lwir11      | 10.5 - 11.5     |                       | 10        | 25           |            |                         | 31    |      |             |
-| lwir12      | 11.5 - 12.5     |                       | 11        | 26           |            |                         | 32    |      |             |
+| Common Name | Band Range (μm) | Landsat 5 TM / 7 ETM+ | Landsat 8 | Landsat Next | Sentinel-2 | Sentinel-3 OLCI / SLSTR | MODIS | NAIP | Planetscope | Worldview 2 / 3 |
+| ----------- | --------------- | --------------------- | --------- | ------------ | ---------- | ----------------------- | ----- | ---- | ----------- | --------------- |
+| pan         | 0.40 - 1.00     | - / 8                 | 8         |              |            |                         |       |      |             | (1)             |
+| coastal     | 0.40 - 0.45     |                       | 1         | 2            | 1          | 3 / -                   |       |      | 1           | 1               |
+| blue        | 0.45 - 0.53     | 1                     | 2         | 3            | 2          | 4 / -                   | 3     | 3    | 2           | 2               |
+| green       | 0.51 - 0.60     | 2                     | 3         | 4            | 3          | 6 / 1                   | 4     | 2    | 4           | 3               |
+| green05     | 0.51 - 0.55     |                       |           |              |            | 5 / -                   | 11    |      | 3           |                 |
+| yellow      | 0.58 - 0.62     |                       |           | 5            |            | 7 / -                   |       |      | 5           | 4               |
+| red         | 0.62 - 0.69     | 3                     | 4         | 8            | 4          | 9 / 2                   | 1     | 1    | 6           | 5               |
+| rededge     | 0.69 - 0.79     |                       |           |              |            |                         |       |      |             | 6               |
+| rededge071  | 0.69 - 0.73     |                       |           | 9            | 5          | 11 / -                  |       |      | 7           |                 |
+| rededge075  | 0.73 - 0.76     |                       |           | 10           | 6          | 12 / -                  |       |      |             |                 |
+| rededge078  | 0.76 - 0.79     |                       |           |              | 7          | 16 / -                  |       |      |             |                 |
+| nir         | 0.76 - 1.00     | 4 / 8                 |           | 11           | 8          |                         | 2     | 4    |             | 7               |
+| nir08       | 0.80 - 0.90     |                       | 5         | 12           | 8a         | 17 / 3                  |       |      | 8           |                 |
+| nir09       | 0.90 - 1.00     |                       |           | 13           | 9          | 20 / -                  |       |      |             |                 |
+| cirrus      | 1.35 - 1.40     |                       | 9         | 17           | 10         | - / 4                   | 26    |      |             |                 |
+| swir16      | 1.55 - 1.75     | 5                     | 6         | 18           | 11         | - / 5                   | 6     |      |             |                 |
+| swir22      | 2.08 - 2.35     | 7                     | 7         | 21           | 12         | - / 6                   | 7     |      |             |                 |
+| lwir        | 10.4 - 12.5     | 6                     |           |              |            |                         |       |      |             |                 |
+| lwir11      | 10.5 - 11.5     |                       | 10        | 25           |            |                         | 31    |      |             |                 |
+| lwir12      | 11.5 - 12.5     |                       | 11        | 26           |            |                         | 32    |      |             |                 |
 
-The difference between the `nir`, `nir08`, and `nir09` bands are that the `nir` band is a wider band that covers 
-most of the spectral range of 0.75μm to 1.0μm. `nir08` and `nir09` are narrow bands centered 0.85μm and 0.95μm 
-respectively. The same goes for the difference between:
-- `lwir`, `lwir11` and `lwir12`
-- `rededge`, `rededge071`, `rededge075` and `rededge078`
+The difference between the `nir`, `nir08`, and `nir09` bands are that the `nir` band is a wider band that covers
+most of the spectral range of 0.76μm to 1.0μm. `nir08` and `nir09` are narrow bands centered 0.85μm and 0.95μm
+respectively. The same applies for all variants that have numerical suffixes, e.g. green, lwir and rededge.
 
 ## Best Practices
 
