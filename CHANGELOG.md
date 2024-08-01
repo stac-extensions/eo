@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added new common names for `green05`, `rededge71`, `rededge75`, and `rededge78`
+- More satellite mappings for the common names
 - `eo:cloud_cover` and `eo:snow_cover` can be used in bands
 - `eo:common_name`, `eo:center_wavelength`, `eo:full_width_half_max` and `eo:solar_illumination`
   can be used in Assets and Item Properties
@@ -24,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `solar_illumination` has been renamed to `eo:solar_illumination`
 - The bands in Item Properties are not meant to be the union of the asset bands any longer
   You usually don't list bands in Item Properties any longer unless all assets have the same bands.
+- Small changes to the band ranges in common names to be closer to the [Awesome Spectral Indices](https://github.com/awesome-spectral-indices/awesome-spectral-indices)
 
 ### Removed
 
