@@ -95,6 +95,16 @@
                   },
                   {
                     "properties": {
+                      "eo:snow_cover": {
+                        "type": ["array", "object"],
+                        "items": {
+                          "$ref": "#/definitions/eo:snow_cover"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "properties": {
                       "eo:common_name": {
                         "type": ["array", "object"],
                         "items": {
