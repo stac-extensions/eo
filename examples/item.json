@@ -5,6 +5,7 @@
   ],
   "type": "Feature",
   "id": "20201211_223832_CS2",
+  "collection": "eo-collection",
   "bbox": [
     172.91173669923782,
     1.3438851951615003,
@@ -50,27 +51,6 @@
     "eo:cloud_cover": 1.2,
     "eo:snow_cover": 0
   },
-  "collection": "eo-collection",
-  "links": [
-    {
-      "rel": "root",
-      "href": "./collection.json",
-      "type": "application/json",
-      "title": "Simple Example Collection"
-    },
-    {
-      "rel": "parent",
-      "href": "./collection.json",
-      "type": "application/json",
-      "title": "Simple Example Collection"
-    },
-    {
-      "rel": "collection",
-      "href": "./collection.json",
-      "type": "application/json",
-      "title": "Simple Example Collection"
-    }
-  ],
   "assets": {
     "analytic": {
       "href": "https://storage.googleapis.com/open-cogs/stac-examples/20201211_223832_CS2_analytic.tif",
@@ -147,5 +127,25 @@
         }
       ]
     }
-  }
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "./collection.json",
+      "type": "application/json",
+      "title": "Simple Example Collection"
+    },
+    {
+      "rel": "parent",
+      "href": "./collection.json",
+      "type": "application/json",
+      "title": "Simple Example Collection"
+    },
+    {
+      "rel": "collection",
+      "href": "./collection.json",
+      "type": "application/json",
+      "title": "Simple Example Collection"
+    }
+  ]
 }
