@@ -67,6 +67,7 @@ Initial independent release, see [previous history](https://github.com/radiantea
 
 - `common_name` is validated as an enum (no other values allowed)
 
+[Unreleased]: <https://github.com/stac-extensions/eo/compare/v2.0.0...HEAD>
 [v2.0.0]: <https://github.com/stac-extensions/eo/compare/v2.0.0-beta.1...v2.0.0>
 [v2.0.0-beta.1]: <https://github.com/stac-extensions/eo/compare/v1.1.0...v2.0.0-beta.1>
 [v1.1.0]: <https://github.com/stac-extensions/eo/compare/v1.0.0...v1.1.0>
