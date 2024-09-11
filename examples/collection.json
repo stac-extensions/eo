@@ -4,7 +4,7 @@
   "stac_extensions": [
     "https://stac-extensions.github.io/eo/v2.0.0/schema.json"
   ],
-  "stac_version": "1.1.0-beta.1",
+  "stac_version": "1.1.0",
   "description": "A simple Collection demonstrating EO extension fields in a Collection.",
   "title": "Simple EO Collection",
   "extent": {
