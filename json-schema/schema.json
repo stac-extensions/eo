@@ -150,6 +150,9 @@
         ],
         "anyOf": [
           {
+            "$ref": "#/definitions/require_in_bands"
+          },
+          {
             "$ref": "#/definitions/require_assets"
           },
           {
