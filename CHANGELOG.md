@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.2.0] - 2026-05-04
+
+### Added
+
+- Extended the bands for `eo:bands` fields to include some narrow bands i.e. green05, rededge071, rededge075, rededge078.
+
 ## [v1.1.0] - 2023-02-10
 
 ### Added
