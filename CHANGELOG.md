@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- `Replace minimumExclusive` with `exclusiveMinimum` to follow [Json Schema draft 07](https://json-schema.org/draft-07)
+
 ## [v2.0.0] - 2024-09-09
 
 - No changes required, please see [v2.0.0-beta.1](#v200-beta1---2024-08-01) for details.
