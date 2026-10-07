@@ -326,12 +326,12 @@
     "eo:center_wavelength": {
       "title": "Center Wavelength",
       "type": "number",
-      "minimumExclusive": 0
+      "exclusiveMinimum": 0
     },
     "eo:full_width_half_max": {
       "title": "Full Width Half Max (FWHM)",
       "type": "number",
-      "minimumExclusive": 0
+      "exclusiveMinimum": 0
     },
     "eo:solar_illumination": {
       "title": "Solar Illumination",
